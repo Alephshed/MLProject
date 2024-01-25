@@ -3,7 +3,7 @@ import sys
 #como gestión de I/O (Input/Output) y variables de entorno.
 
 import logging #Testeo del funcionamiento de logger y exception
-import logger #Hay que importar esto para que funcione, logger =! logging
+import src.logger #Hay que importar esto para que funcione, logger =! logging
 
 def error_message_detail(error,error_detail:sys):
     _,_,exc_tb = error_detail.exc_info() #3 important info, descartamos los dos primeros de momento
