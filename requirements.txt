@@ -6,4 +6,5 @@ ipykernel
 scikit-learn
 catboost
 xgboost
+dill
 #-e . #lo comentamos para no reahacer el setup, solo la instalación
