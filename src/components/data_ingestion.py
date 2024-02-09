@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation, DataTansformationConfig
+from src.components.model_trainer import ModelTrainer, ModelTrainerConfig
+
 #Los imputs que necesitamos se crean en esta clase, cosas como los paths, de entrada
 
 #El decorador facilita la creación de la clase, creando el init de manera automática, por ejemplo.
@@ -32,6 +34,9 @@ class DataIngestion:
         #Si hubiera una base de datos de la que leer, ese código iría aquí (aunque podría ponerse en utils y ejecutarse aquí)
         logging.info("Entered te data ingestion method or component")
         try:
+            #newpath = os.path.relpath("d:\\Usuario\\Documentos\\MLProject\\notebook\\data\\stud.csv",os.getcwd())
+            #hay que retocar esto para que cree la carpeta artifacts donde toca
+            #df = pd.read_csv("D:\Usuario\Documentos\MLProject\notebook\data\stud.csv")
             df = pd.read_csv('notebook\data\stud.csv') #Esto está bien que sea un path relativo
             logging.info('Read the dataset as dataframe')
 
@@ -62,4 +67,8 @@ if __name__ == "__main__":
     train_data, test_data = obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data)
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr,test_arr))
+
